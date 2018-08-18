@@ -33,6 +33,18 @@ def show():
     return render_template('v2.html', v2=v2)
 
 
+@v2website.route('/sub')
+def sub():
+    try:
+        v2url = Query(V2info).add_descending('createdAt').first()
+    except LeanCloudError as e:
+        print(e)
+        context = None
+    else:
+        context = v2url.get('urls_vmess_paser')
+    return context
+
+
 @v2website.route('', methods=['POST'])
 def add():
     content = request.form
