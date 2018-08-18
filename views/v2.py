@@ -30,6 +30,7 @@ def show():
             v2 = []
         else:
             raise e
+    #print(v2[0].dump())
     return render_template('v2.html', v2=v2)
 
 
@@ -38,7 +39,7 @@ def add():
     content = request.form
     v2 = V2website(**content.to_dict())
     try:
-        #v2.save()
+        v2.save()
     except LeanCloudError as e:
         return e.error, 502
     return redirect(url_for('v2.show'))

@@ -39,7 +39,7 @@ def update_sub():
     time=datetime.now()
 
     for v2 in v2s:
-        if v2.Inactivated:
+        if v2.Inactivated == '0':
             status.append({'name': v2.name, 'status': '已停用'})
             continue
         try:

@@ -20,7 +20,7 @@ leancloud.init(APP_ID, app_key=APP_KEY, master_key=MASTER_KEY)
 leancloud.use_master_key(False)
 
 # 需要重定向到 HTTPS 可去除下一行的注释。
-# app = leancloud.HttpsRedirectMiddleware(app)
+app = leancloud.HttpsRedirectMiddleware(app)
 app = engine.wrap(app)
 application = app
 

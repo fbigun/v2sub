@@ -21,7 +21,7 @@
       </form>
       <ul>
         {% for site in v2 %}
-        <li>{{ json.dumps(site) }}</li>
+        <li>{{ site.get('name') }}</li>
         {% endfor %}
       </ul>
     </div>
