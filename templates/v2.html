@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>V2ray 订阅</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+  </head>
+  <body>
+    <div id="container">
+      <h1>V2ray 订阅</h1>
+      <form action="/v2" method="POST">
+        <fieldset>
+        机场名称： <input type="text" name="name" /><br>
+        简称： <input type="text" name="Abbreviation" /><br>
+        订阅地址： <input type="text" name="url_sub" /><br>
+        账号： <input type="text" name="username" /><br>
+        密码： <input type="password" name="passwd" /><br>
+        官网： <input type="text" name="official_site" /><br>
+        失活状态： <input type="text" name="Inactivated" /><br>
+        <input type="submit" value="新增" />
+          </fieldset>
+      </form>
+      <ul>
+        {% for site in v2 %}
+        <li>{{ json.dumps(site) }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
