@@ -39,7 +39,7 @@ def update_sub():
 
     for v2 in v2s:
         if v2.get('Inactivated', '1') == '0':
-            status.append({'name': v2.name, 'status': '已停用'})
+            status.append({'name': v2.get('name'), 'status': '已停用'})
             continue
         try:
             context = requests.get(v2.get('url_sub'), timeout=5)
@@ -47,7 +47,7 @@ def update_sub():
             status.append({'name': v2.get('name'), 'status': '更新失败'})
             pass
         else:
-            status.append({'name': v2.name, 'status': '成功'})
+            status.append({'name': v2.get('name'), 'status': '成功'})
             urls = base64.standard_b64decode(context.content).decode('utf-8').split('\n')
             for url in urls[:-1]:
                 protocol, config = url.split('://')
@@ -64,5 +64,6 @@ def update_sub():
         v2info.save()
     except:
         print('连接leancloud云保存失败')
+    return 'success'
 
 
