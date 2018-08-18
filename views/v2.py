@@ -30,7 +30,6 @@ def show():
             v2 = []
         else:
             raise e
-    #print(v2[0].dump())
     return render_template('v2.html', v2=v2)
 
 
